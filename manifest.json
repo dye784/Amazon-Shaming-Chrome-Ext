@@ -8,8 +8,14 @@
     "page": "options.html",
     "chrome_style": true
   },
+  "icons":
+   {
+      "128": "assests/give-icon-yellow-128.png",
+      "16": "assests/give-icon-yellow.png"
+   },
+
   "browser_action": {
-    "default_icon": "/assests/give-icon-yellow.png", // icon for extension
+    // "default_icon": "/assests/give-icon-yellow.png", // icon for extension
     "default_title": "Click here!", // Shows up on mouse hover
     "default_popup": "popup.html"
   },

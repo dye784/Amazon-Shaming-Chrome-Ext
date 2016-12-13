@@ -134,6 +134,10 @@
           outline-offset: 0px;
       }
 
+      p {
+        font-size: 1.2em;
+      }
+
     </style>
     <!--
       - JavaScript and HTML must be in separate files: see our Content Security
@@ -142,6 +146,7 @@
       - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
      -->
     <!-- <script src="popup.js"></script> -->
+    <script src="scraper.js"></script>
     <script src="selected-charities.js"></script>
     <script src="someFuncs.js"></script>
   </head>
@@ -160,8 +165,8 @@
       </div>
 
       <div class="row">
-        <div class="well text-center">
-          <button type="button" class="btn btn-hot text-uppercase btn-lg">Donate <span class="glyphicon glyphicon-heart" aria-hidden="true"></span></button>
+        <div class="well text-center" id="charity-button">
+
         </div>
       </div>
 

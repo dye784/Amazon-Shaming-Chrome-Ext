@@ -1,8 +1,7 @@
-const total = 0;
+var total = 0;
 
 window.setTimeout(() => {
 	total = +(($("td:contains('Total')").next().next().text()).replace(/[$,]/g, ''));
-
 }, 500);
 
 
