@@ -74,6 +74,9 @@ $(function(){
 
   var randomCharity = randomChoose(selectedCharities);
   var goodDeed = whatYourMoneyCanDo(2, randomCharity);
+  $('#charity-image').append(
+    `<img src=${randomCharity.imgUrl} />`
+  )
 
   $('#charity-text').append(
     $(`<p>Buying items? For the items in your cart you could have donated to ${randomCharity.name} and ${goodDeed}</p>`)
