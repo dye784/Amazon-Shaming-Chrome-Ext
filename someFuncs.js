@@ -36,23 +36,25 @@ console.log(specificCharityCosts(2000, SOUTHERN_POVERTY_LAW))
 $(function(){
   $SOMEIDHERE = $('#SOMEIDHERE');
 
-  const charities = [
-  {
-    name: "Doctors Without Borders",
-    donationURL: 'https://donate.doctorswithoutborders.org/onetime.cfm'
-  },
-  {
-    name: "World Wildlife Fund",
-    donationURL: 'https://support.worldwildlife.org/site/SPageServer?pagename=main_onetime&s_src=AWE1510GD914'
-  },
-  {
-    name: "American Red Cross",
-    donationURL: 'https://www.redcross.org/donate/donation'
-  },
-  {
-    name: "Southern Poverty Law",
-    donationURL: 'https://donate.splcenter.org/'
-  }]
+  const charities = {
+    doctorsWithoutBorders: {
+      name: "Doctors Without Borders",
+      donationURL: 'https://donate.doctorswithoutborders.org/onetime.cfm',
+
+    },
+    worldWildlifeFund: {
+      name: "World Wildlife Fund",
+      donationURL: 'https://support.worldwildlife.org/site/SPageServer?pagename=main_onetime&s_src=AWE1510GD914'
+    },
+    americanRedCross: {
+      name: "American Red Cross",
+      donationURL: 'https://www.redcross.org/donate/donation'
+    },
+    southernPoveryLawCenter: {
+      name: "Southern Poverty Law Center",
+      donationURL: 'https://donate.splcenter.org/'
+    }
+  }
 
   // charities.forEach(charity => {
   //   $SOMEIDHERE.append($(`<a href=${charity.donationURL}>${charity.name}</a>`))
@@ -61,7 +63,8 @@ $(function(){
   console.log(selectedCharities);
 
   selectedCharities.forEach(charity => {
-    $('#OTHER').append($(`<p>${charity}</p>`))
+    var newCharity = charities[charity];
+    $('#OTHER').append($(`<p><a href=${newCharity.donationURL}>${newCharity.name}</a></p>`))
   })
 
 })
