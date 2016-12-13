@@ -92,11 +92,6 @@ function specificCharityCosts(money, charity) {
     }
   }
 
-  // charities.forEach(charity => {
-  //   $SOMEIDHERE.append($(`<a href=${charity.donationURL}>${charity.name}</a>`))
-  // })
-// selectedCharities.push(5)
-
   selectedCharities.forEach(charity => {
     var newCharity = charities[charity];
     $('#OTHER').append($(`<p><a href=${newCharity.donationURL}>${newCharity.name}</a></p>`))
