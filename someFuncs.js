@@ -57,13 +57,13 @@ $(function(){
   // charities.forEach(charity => {
   //   $SOMEIDHERE.append($(`<a href=${charity.donationURL}>${charity.name}</a>`))
   // })
-selectedCharities.push(5)
+// selectedCharities.push(5)
   console.log(selectedCharities);
 
   selectedCharities.forEach(charity => {
     $('#OTHER').append($(`<p>${charity}</p>`))
   })
 
-})()
+})
 
 
