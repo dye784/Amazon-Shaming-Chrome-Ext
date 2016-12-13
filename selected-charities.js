@@ -9,6 +9,7 @@ var selectedCharities = (function () {
   chrome.storage.sync.get({
     charities: []
   }, function(items) {
+    console.log(items);
     var charities = items.charities;
     publicCharities = charities;
   })
