@@ -8,6 +8,7 @@ function whatYourMoneyCanDo(money, charity) {
   let amounts = Object.keys(charity.resources);
   let min = '';
   amounts.forEach(function(amount) {
+    console.log(amount);
     if (money <= amount) min = charity.resources[amount];
   });
   return min;
@@ -17,8 +18,11 @@ function whatYourMoneyCanDo(money, charity) {
 function randomChoose (charityList) {
   var length = charityList.length;
   var randomSelection = Math.floor(Math.random() * length);
-  var selectedCharity = charityList[randomSelection];
-  var chosenCharity = charityList[selectedCharity];
+  console.log('random selec', randomSelection);
+  var selectedCharity = selectedCharities[randomSelection];
+  console.log('selected', selectedCharity);
+  var chosenCharity = charities[selectedCharity];
+  console.log('chosen', chosenCharity);
   return chosenCharity;
 }
 
@@ -43,7 +47,7 @@ function specificCharityCosts(money, charity) {
 }
 
 
-$(function(){
+// $(function(){
   $SOMEIDHERE = $('#SOMEIDHERE');
 
   const charities = {
@@ -101,6 +105,6 @@ $(function(){
     $('#OTHER').append($(`<p><a href=${newCharity.donationURL}>${newCharity.name}</a></p>`))
   })
 
-})
+// })
 
 
