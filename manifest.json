@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+
+  "name": "Amazon Shame Chrome Ext",
+  "description": "This extensions shames people when on Amazon into donating to their preferred charities.", // change description
+  "version": "1.0",
+  "browser_action": {
+    "default_icon": "icon.png", // icon for extension
+    "default_title": "Click here!" // Shows up on mouse hover
+  },
+  // "chrome_url_overrides" : {
+  //   "newtab": "newTab.html" // overrides new tab and replaces with mine
+  // },
+  "permissions": [
+    "activeTab",
+    "https://ajax.googleapis.com/"
+  ]
+}
