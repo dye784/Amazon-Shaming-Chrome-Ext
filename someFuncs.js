@@ -3,6 +3,8 @@ const WORLD_WILDLIFE_FUND = "World Wildlife Fund";
 const AMERICAN_RED_CROSS = "American Red Cross";
 const SOUTHERN_POVERTY_LAW = "Southern Poverty Law Center";
 
+const
+
 $(function(){
 
   //simple cost calculator
@@ -73,7 +75,7 @@ $(function(){
   }
 
   var randomCharity = randomChoose(selectedCharities);
-  var goodDeed = whatYourMoneyCanDo(2, randomCharity);
+  var goodDeed = whatYourMoneyCanDo(total, randomCharity);
   $('#charity-image').append(
     `<img src=${randomCharity.imgUrl} />`
   )
