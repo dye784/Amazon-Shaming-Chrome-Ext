@@ -1,10 +1,14 @@
 // Saves options to chrome.storage
 function save_options() {
-  var color = document.getElementById('color').value;
-  var likesColor = document.getElementById('like').checked;
+  // var checkboxes = document.getElementById('charity-checkboxes');
+  var charities = [];
+  [].forEach.call(document.querySelectorAll('input[type="checkbox"]:checked'), function(cb) {
+    // addElement(cb.value);
+    charities.push(cb.value);
+  });
+
   chrome.storage.sync.set({
-    favoriteColor: color,
-    likesColor: likesColor
+    charities: 'newCharity'
   }, function() {
     // Update status to let user know options were saved.
     var status = document.getElementById('status');
@@ -20,13 +24,28 @@ function save_options() {
 function restore_options() {
   // Use default value color = 'red' and likesColor = true.
   chrome.storage.sync.get({
-    favoriteColor: 'red',
-    likesColor: true
+    charities: []
   }, function(items) {
-    document.getElementById('color').value = items.favoriteColor;
-    document.getElementById('like').checked = items.likesColor;
+    charities.forEach(function(value) {
+      addElement(value)
+      document.querySelectorAll(`input[value=${value}]`).className = ':checked'
+    })
+    // document.getElementById('charity-checkboxes').value = items.favoriteColor;
   });
 }
+
 document.addEventListener('DOMContentLoaded', restore_options);
-document.getElementById('save').addEventListener('click',
-    save_options);
+document.getElementById('save').addEventListener('click', save_options);
+
+
+function addElement (text) {
+  // create a new div element
+  // and give it some content
+  var newDiv = document.createElement("div");
+  var newContent = document.createTextNode(text);
+  newDiv.appendChild(newContent); //add the text node to the newly created div.
+
+  // add the newly created element and its content into the DOM
+  var currentDiv = document.getElementById("charity-checkboxes");
+  document.body.insertBefore(newDiv, currentDiv);
+}
