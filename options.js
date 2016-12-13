@@ -8,7 +8,7 @@ function save_options() {
   });
 
   chrome.storage.sync.set({
-    charities: 'newCharity'
+    charities: charities
   }, function() {
     // Update status to let user know options were saved.
     var status = document.getElementById('status');
@@ -26,9 +26,11 @@ function restore_options() {
   chrome.storage.sync.get({
     charities: []
   }, function(items) {
-    charities.forEach(function(value) {
-      addElement(value)
-      document.querySelectorAll(`input[value=${value}]`).className = ':checked'
+    // addElement(JSON.stringify(items))
+    items.charities.forEach(function(value) {
+      // addElement(value)
+      document.getElementById(value).setAttribute('checked', 'checked')
+      // $(`input[value=${value}]`).attr('checked', 'checked')
     })
     // document.getElementById('charity-checkboxes').value = items.favoriteColor;
   });
