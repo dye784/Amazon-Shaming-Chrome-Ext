@@ -33,27 +33,6 @@ console.log(specificCharityCosts(2000, WORLD_WILDLIFE_FUND))
 console.log(specificCharityCosts(2000, AMERICAN_RED_CROSS))
 console.log(specificCharityCosts(2000, SOUTHERN_POVERTY_LAW))
 
-// hard coded charities
-
-
-// ]
-
-//gets charity from chrome storage
-// const arrayOfCharityLinks = chrome.storage.sync.get({
-//   charities
-// })
-
-// html for charities with name and links
-
-
-// console.log(arrayHTMLcharityWithLinks)
-
-// <a href="http://www.w3schools.com/html/">Visit our HTML tutorial</a>
-
-
-//append html to dom at some id
-// document.getElementById('SOMEIDHERE').append(arrayHTMLcharityWithLinks)
-
 $(function(){
   $SOMEIDHERE = $('#SOMEIDHERE');
 
@@ -75,12 +54,16 @@ $(function(){
     donationURL: 'https://donate.splcenter.org/'
   }]
 
-  charities.forEach(charity => {
-    $SOMEIDHERE.append($(`<a href=${charity.donationURL}>${charity.name}</a>`))
+  // charities.forEach(charity => {
+  //   $SOMEIDHERE.append($(`<a href=${charity.donationURL}>${charity.name}</a>`))
+  // })
+selectedCharities.push(5)
+  console.log(selectedCharities);
+
+  selectedCharities.forEach(charity => {
+    $('#OTHER').append($(`<p>${charity}</p>`))
   })
 
 })()
-    // arrayHTMLcharityWithLinks.forEach(link => {
-    //   $SOMEIDHERE.append(link)
-    // })
+
 
