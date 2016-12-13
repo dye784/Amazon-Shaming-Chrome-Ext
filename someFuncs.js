@@ -34,35 +34,53 @@ console.log(specificCharityCosts(2000, AMERICAN_RED_CROSS))
 console.log(specificCharityCosts(2000, SOUTHERN_POVERTY_LAW))
 
 // hard coded charities
-const charities = {
-  DOCTORS_WITHOUT_BORDERS: {
-    donationURL: 'https://donate.doctorswithoutborders.org/onetime.cfm'
-  },
-  WORLD_WILDLIFE_FUND : {
-    donationURL: 'https://support.worldwildlife.org/site/SPageServer?pagename=main_onetime&s_src=AWE1510GD914'
-  },
-  AMERICAN_RED_CROSS : {
-    donationURL: 'https://www.redcross.org/donate/donation'
-  },
-  SOUTHERN_POVERTY_LAW : {
-    donationURL: 'https://donate.splcenter.org/'
-  }
-}
+
+
+// ]
 
 //gets charity from chrome storage
-const arrayOfCharityLinks = chrome.storage.sync.get({
-  charities
-})
+// const arrayOfCharityLinks = chrome.storage.sync.get({
+//   charities
+// })
 
 // html for charities with name and links
-const arrayHTMLcharityWithLinks = arrayOfCharityLinks.map(charity => {
-  return (<a href={charity.donationURL}>{charity}</a>)
-})
 
-console.log(arrayHTMLcharityWithLinks)
+
+// console.log(arrayHTMLcharityWithLinks)
 
 // <a href="http://www.w3schools.com/html/">Visit our HTML tutorial</a>
 
 
 //append html to dom at some id
-document.getElementById('SOMEIDHERE').append(arrayHTMLcharityWithLinks)
+// document.getElementById('SOMEIDHERE').append(arrayHTMLcharityWithLinks)
+
+$(function(){
+  $SOMEIDHERE = $('#SOMEIDHERE');
+
+  const charities = [
+  {
+    name: "Doctors Without Borders",
+    donationURL: 'https://donate.doctorswithoutborders.org/onetime.cfm'
+  },
+  {
+    name: "World Wildlife Fund",
+    donationURL: 'https://support.worldwildlife.org/site/SPageServer?pagename=main_onetime&s_src=AWE1510GD914'
+  },
+  {
+    name: "American Red Cross",
+    donationURL: 'https://www.redcross.org/donate/donation'
+  },
+  {
+    name: "Southern Poverty Law",
+    donationURL: 'https://donate.splcenter.org/'
+  }]
+
+  charities.forEach(charity => {
+    $SOMEIDHERE.append($(`<a href=${charity.donationURL}>${charity.name}</a>`))
+  })
+
+})()
+    // arrayHTMLcharityWithLinks.forEach(link => {
+    //   $SOMEIDHERE.append(link)
+    // })
+

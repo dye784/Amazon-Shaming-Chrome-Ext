@@ -11,10 +11,7 @@
 <html>
   <head>
     <title>Getting Started Extension's Popup</title>
-    <script
-     src="https://code.jquery.com/jquery-3.1.1.min.js"
-     integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-     crossorigin="anonymous"></script>
+    <script src="jquery-3.1.1.min.js"></script>
     <style>
       body {
         font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
@@ -35,42 +32,12 @@
       - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
      -->
     <!-- <script src="popup.js"></script> -->
-    <script>
-
-    var charities = {
-      DOCTORS_WITHOUT_BORDERS: {
-        donationURL: 'https://donate.doctorswithoutborders.org/onetime.cfm'
-      },
-      WORLD_WILDLIFE_FUND : {
-        donationURL: 'https://support.worldwildlife.org/site/SPageServer?pagename=main_onetime&s_src=AWE1510GD914'
-      },
-      AMERICAN_RED_CROSS : {
-        donationURL: 'https://www.redcross.org/donate/donation'
-      },
-      SOUTHERN_POVERTY_LAW : {
-        donationURL: 'https://donate.splcenter.org/'
-      }
-    }
-
-    const arrayHTMLcharityWithLinks = charities.map(charity => {
-      return (<a href=`${charity.donationURL}`>`${charity}`</a>)
-    })
-
-        $SOMEIDHERE = $('#SOMEIDHERE');
-
-    arrayHTMLcharityWithLinks.forEach(link => {
-      $SOMEIDHERE.append(link)
-    })
-
-
-
-  // });
-    </script>
+    <script src="someFuncs.js"></script>
   </head>
   <body>
     <div id="status"></div>
     <img id="image-result" hidden>
-    <h1 id="SOMEIDHERE">HELLOOOO</h1>
+    <h3 id="SOMEIDHERE">HELLOOOO</h3>
 <!--     <a href={charity.donationURL}>{charity}</a>
     <a href={charity.donationURL}>{charity}</a>
     <a href={charity.donationURL}>{charity}</a>
