@@ -3,10 +3,12 @@ const WORLD_WILDLIFE_FUND = "World Wildlife Fund";
 const AMERICAN_RED_CROSS = "American Red Cross";
 const SOUTHERN_POVERTY_LAW = "Southern Poverty Law Center";
 
+//simple cost calculator
 function whatYourMoneyCanDo(money, goodDeedPrice) {
   return money / goodDeedPrice * 1.00
 }
 
+// switch case for specific charities
 function specificCharityCosts(money, charity) {
   switch(charity) {
     case DOCTORS_WITHOUT_BORDERS :
@@ -31,16 +33,36 @@ console.log(specificCharityCosts(2000, WORLD_WILDLIFE_FUND))
 console.log(specificCharityCosts(2000, AMERICAN_RED_CROSS))
 console.log(specificCharityCosts(2000, SOUTHERN_POVERTY_LAW))
 
+// hard coded charities
+const charities = {
+  DOCTORS_WITHOUT_BORDERS: {
+    donationURL: 'https://donate.doctorswithoutborders.org/onetime.cfm'
+  },
+  WORLD_WILDLIFE_FUND : {
+    donationURL: 'https://support.worldwildlife.org/site/SPageServer?pagename=main_onetime&s_src=AWE1510GD914'
+  },
+  AMERICAN_RED_CROSS : {
+    donationURL: 'https://www.redcross.org/donate/donation'
+  },
+  SOUTHERN_POVERTY_LAW : {
+    donationURL: 'https://donate.splcenter.org/'
+  }
+}
 
-// Doctors without Borders
-// https://donate.doctorswithoutborders.org/onetime.cfm
+//gets charity from chrome storage
+const arrayOfCharityLinks = chrome.storage.sync.get({
+  charities
+})
 
-// World Wildlife Fund
-// https://support.worldwildlife.org/site/SPageServer?pagename=main_onetime&s_src=AWE1510GD914
+// html for charities with name and links
+const arrayHTMLcharityWithLinks = arrayOfCharityLinks.map(charity => {
+  return (<a href={charity.donationURL}>{charity}</a>)
+})
 
-// Souther Poverty Law Center
-// https://donate.splcenter.org/
+console.log(arrayHTMLcharityWithLinks)
 
-// American Red Cross
-// https://www.redcross.org/donate/donation
+// <a href="http://www.w3schools.com/html/">Visit our HTML tutorial</a>
 
+
+//append html to dom at some id
+document.getElementById('SOMEIDHERE').append(arrayHTMLcharityWithLinks)
