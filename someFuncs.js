@@ -5,7 +5,12 @@ const SOUTHERN_POVERTY_LAW = "Southern Poverty Law Center";
 
 //simple cost calculator
 function whatYourMoneyCanDo(money, charity) {
-  return money / goodDeedPrice * 1.00
+  let amounts = Object.keys(charity.resources);
+  let min = '';
+  amounts.forEach(function(amount) {
+    if (money <= amount) min = charity.resources[amount];
+  })
+  return min;
 }
 
 //randomly choose a charity and return the full object
@@ -44,18 +49,20 @@ $(function(){
   const charities = {
     doctorsWithoutBorders: {
       name: "Doctors Without Borders",
-      donationURL: 'https://donate.doctorswithoutborders.org/onetime.cfm',
+      donationUrl: 'https://donate.doctorswithoutborders.org/onetime.cfm',
+      imgUrl: '',
       resources: {
         0: 'support the worldwide fight access to life-saving medicine',
         0.67: 'vaccinate a child against tuberculosis, measles, diphtheria, tetanus, pertussis, and polio',
         5: 'Give a child a rotavirus vaccine',
         46: 'fully vaccinate a child',
-        100: 'be a hero to parients around the world'
+        100: 'be a hero to patients around the world'
       }
     },
     worldWildlifeFund: {
       name: "World Wildlife Fund",
-      donationURL: 'https://support.worldwildlife.org/site/SPageServer?pagename=main_onetime&s_src=AWE1510GD914',
+      donationUrl: 'https://support.worldwildlife.org/site/SPageServer?pagename=main_onetime&s_src=AWE1510GD914',
+      imgUrl: '',
       resources: {
         0: 'support the worldwide fight to save animals',
         15: 'adopt a polar bear or a penguin for a month',
@@ -65,7 +72,8 @@ $(function(){
     },
     americanRedCross: {
       name: "American Red Cross",
-      donationURL: 'https://www.redcross.org/donate/donation',
+      donationUrl: 'https://www.redcross.org/donate/donation',
+      imgUrl: '',
       resources: {
         0: 'help distribute life-saving blood units worldwide',
         250: 'pay for the total costs of a unit of blood',
@@ -74,6 +82,7 @@ $(function(){
     southernPoveryLawCenter: {
       name: "Southern Poverty Law Center",
       donationURL: 'https://donate.splcenter.org/',
+      imgUrl: '',
       resources: {
         0: 'have your donation matched dollar-for-dollar to support civil rights',
         50: 'have over 50% of your gift go directly to public education and the fight for civil rights'
