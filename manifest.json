@@ -6,7 +6,8 @@
   "version": "1.0",
   "browser_action": {
     "default_icon": "icon.png", // icon for extension
-    "default_title": "Click here!" // Shows up on mouse hover
+    "default_title": "Click here!", // Shows up on mouse hover
+    "default_popup": "popup.html"
   },
   // "chrome_url_overrides" : {
   //   "newtab": "newTab.html" // overrides new tab and replaces with mine
