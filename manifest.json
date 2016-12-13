@@ -15,5 +15,11 @@
   "permissions": [
     "activeTab",
     "https://ajax.googleapis.com/"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://*.amazon.com/*"],
+      "js": ["popup.js"]
+    }
   ]
 }
