@@ -19,11 +19,12 @@
   "permissions": [
     "tabs",
     "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*/checkout"],
+      // "css": ["mystyles.css"],
+      "js": ["scraper.js"]
+    }
   ]
-  // "content_scripts": [
-  //   {
-  //     "matches": ["*://*.amazon.com/*"],
-  //     "js": ["alert.js"]
-  //   }
-  // ]
 }
