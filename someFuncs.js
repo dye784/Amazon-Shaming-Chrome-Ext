@@ -3,49 +3,29 @@ const WORLD_WILDLIFE_FUND = "World Wildlife Fund";
 const AMERICAN_RED_CROSS = "American Red Cross";
 const SOUTHERN_POVERTY_LAW = "Southern Poverty Law Center";
 
-//simple cost calculator
-function whatYourMoneyCanDo(money, charity) {
-  var amounts = Object.keys(charity.resources);
-  var min = '';
-  amounts.forEach(function(amount, index) {
-    if (money >= +amount) {
-      min = charity.resources[amount];
-    }
-  });
-  return min;
-}
+$(function(){
 
-//randomly choose a charity and return the full object
-function randomChoose (charityList) {
-  var length = charityList.length;
-  var randomSelection = Math.floor(Math.random() * length);
-  var selectedCharity = selectedCharities[randomSelection];
-  var chosenCharity = charities[selectedCharity];
-  return chosenCharity;
-}
-
-// switch case for specific charities
-function specificCharityCosts(money, charity) {
-  switch(charity) {
-    case DOCTORS_WITHOUT_BORDERS :
-      let costOfVaccines = 1000
-      return whatYourMoneyCanDo(money, costOfVaccines)
-    case WORLD_WILDLIFE_FUND :
-      let costOfSavingPanda = 1000
-      return whatYourMoneyCanDo(money, costOfSavingPanda)
-    case AMERICAN_RED_CROSS:
-      let costOfNotActuallyHelping = 1000000000
-      return whatYourMoneyCanDo(money, costOfNotActuallyHelping)
-    case SOUTHERN_POVERTY_LAW:
-      let costOfFightingHate = 10000
-      return whatYourMoneyCanDo(money, costOfFightingHate)
-    default:
-      return;
+  //simple cost calculator
+  function whatYourMoneyCanDo(money, charity) {
+    var amounts = Object.keys(charity.resources);
+    var min = '';
+    amounts.forEach(function(amount, index) {
+      if (money >= +amount) {
+        min = charity.resources[amount];
+      }
+    });
+    return min;
   }
-}
 
+  //randomly choose a charity and return the full object
+  function randomChoose (charityList) {
+    var length = charityList.length;
+    var randomSelection = Math.floor(Math.random() * length);
+    var selectedCharity = selectedCharities[randomSelection];
+    var chosenCharity = charities[selectedCharity];
+    return chosenCharity;
+  }
 
-// $(function(){
   $SOMEIDHERE = $('#SOMEIDHERE');
 
   const charities = {
@@ -56,7 +36,7 @@ function specificCharityCosts(money, charity) {
       resources: {
         0: 'support the worldwide fight access to life-saving medicine',
         0.67: 'vaccinate a child against tuberculosis, measles, diphtheria, tetanus, pertussis, and polio',
-        5: 'Give a child a rotavirus vaccine',
+        5: 'give a child a rotavirus vaccine',
         46: 'fully vaccinate a child',
         100: 'be a hero to patients around the world'
       }
@@ -92,11 +72,19 @@ function specificCharityCosts(money, charity) {
     }
   }
 
-  selectedCharities.forEach(charity => {
-    var newCharity = charities[charity];
-    $('#OTHER').append($(`<p><a href=${newCharity.donationURL}>${newCharity.name}</a></p>`))
-  })
+  var randomCharity = randomChoose(selectedCharities);
+  var goodDeed = whatYourMoneyCanDo(2, randomCharity);
 
-// })
+  $('#charity-text').append(
+    $(`<p>Buying items? For the items in your cart you could have donated to ${randomCharity.name} and ${goodDeed}</p>`)
+
+  )
+
+  // selectedCharities.forEach(charity => {
+  //   var newCharity = charities[charity];
+  //   $('#OTHER').append($(`<p><a href=${newCharity.donationURL}>${newCharity.name}</a></p>`))
+  // })
+
+})
 
 
