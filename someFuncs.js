@@ -9,12 +9,12 @@ function whatYourMoneyCanDo(money, charity) {
   let min = '';
   amounts.forEach(function(amount) {
     if (money <= amount) min = charity.resources[amount];
-  })
+  });
   return min;
 }
 
 //randomly choose a charity and return the full object
-function (charityList) {
+function randomChoose (charityList) {
   var length = charityList.length;
   var randomSelection = Math.floor(Math.random() * length);
   var selectedCharity = charityList[randomSelection];
