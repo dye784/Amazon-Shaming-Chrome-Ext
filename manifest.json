@@ -22,9 +22,9 @@
   ],
   "content_scripts": [
     {
-      "matches": ["*/checkout"],
+      "matches": ["http://*/checkout/*"],
       // "css": ["mystyles.css"],
-      "js": ["scraper.js"]
+      "js": ["jquery-3.1.1.min.js", "scraper.js"]
     }
   ]
 }
