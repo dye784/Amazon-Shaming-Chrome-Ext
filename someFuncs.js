@@ -5,11 +5,12 @@ const SOUTHERN_POVERTY_LAW = "Southern Poverty Law Center";
 
 //simple cost calculator
 function whatYourMoneyCanDo(money, charity) {
-  let amounts = Object.keys(charity.resources);
-  let min = '';
-  amounts.forEach(function(amount) {
-    console.log(amount);
-    if (money <= amount) min = charity.resources[amount];
+  var amounts = Object.keys(charity.resources);
+  var min = '';
+  amounts.forEach(function(amount, index) {
+    if (money >= +amount) {
+      min = charity.resources[amount];
+    }
   });
   return min;
 }
@@ -18,11 +19,8 @@ function whatYourMoneyCanDo(money, charity) {
 function randomChoose (charityList) {
   var length = charityList.length;
   var randomSelection = Math.floor(Math.random() * length);
-  console.log('random selec', randomSelection);
   var selectedCharity = selectedCharities[randomSelection];
-  console.log('selected', selectedCharity);
   var chosenCharity = charities[selectedCharity];
-  console.log('chosen', chosenCharity);
   return chosenCharity;
 }
 
@@ -54,7 +52,7 @@ function specificCharityCosts(money, charity) {
     doctorsWithoutBorders: {
       name: "Doctors Without Borders",
       donationUrl: 'https://donate.doctorswithoutborders.org/onetime.cfm',
-      imgUrl: '',
+      imgUrl: 'https://thinkingglobal.wikispaces.com/file/view/doctors-without-borders.jpg/133141019/231x216/doctors-without-borders.jpg',
       resources: {
         0: 'support the worldwide fight access to life-saving medicine',
         0.67: 'vaccinate a child against tuberculosis, measles, diphtheria, tetanus, pertussis, and polio',
@@ -66,7 +64,7 @@ function specificCharityCosts(money, charity) {
     worldWildlifeFund: {
       name: "World Wildlife Fund",
       donationUrl: 'https://support.worldwildlife.org/site/SPageServer?pagename=main_onetime&s_src=AWE1510GD914',
-      imgUrl: '',
+      imgUrl: 'https://upload.wikimedia.org/wikipedia/en/thumb/2/24/WWF_logo.svg/690px-WWF_logo.svg.png',
       resources: {
         0: 'support the worldwide fight to save animals',
         15: 'adopt a polar bear or a penguin for a month',
@@ -77,7 +75,7 @@ function specificCharityCosts(money, charity) {
     americanRedCross: {
       name: "American Red Cross",
       donationUrl: 'https://www.redcross.org/donate/donation',
-      imgUrl: '',
+      imgUrl: 'http://www.redcross.org/images/MEDIA_CustomProductCatalog/m48040100_ButtonLogo200.jpg',
       resources: {
         0: 'help distribute life-saving blood units worldwide',
         250: 'pay for the total costs of a unit of blood',
@@ -86,7 +84,7 @@ function specificCharityCosts(money, charity) {
     southernPoveryLawCenter: {
       name: "Southern Poverty Law Center",
       donationURL: 'https://donate.splcenter.org/',
-      imgUrl: '',
+      imgUrl: 'http://www.americanthinker.com/legacy_assets/articles/assets/SPLC_Logo.jpg',
       resources: {
         0: 'have your donation matched dollar-for-dollar to support civil rights',
         50: 'have over 50% of your gift go directly to public education and the fight for civil rights'
@@ -98,7 +96,6 @@ function specificCharityCosts(money, charity) {
   //   $SOMEIDHERE.append($(`<a href=${charity.donationURL}>${charity.name}</a>`))
   // })
 // selectedCharities.push(5)
-  console.log(selectedCharities);
 
   selectedCharities.forEach(charity => {
     var newCharity = charities[charity];
