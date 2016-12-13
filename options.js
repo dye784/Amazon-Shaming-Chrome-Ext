@@ -1,12 +1,13 @@
 // Saves options to chrome.storage
 function save_options() {
-  // var checkboxes = document.getElementById('charity-checkboxes');
+
+  // find all checked charities and save to array
   var charities = [];
   [].forEach.call(document.querySelectorAll('input[type="checkbox"]:checked'), function(cb) {
-    // addElement(cb.value);
     charities.push(cb.value);
   });
 
+  // save to Chrome storage
   chrome.storage.sync.set({
     charities: charities
   }, function() {
@@ -22,17 +23,14 @@ function save_options() {
 // Restores select box and checkbox state using the preferences
 // stored in chrome.storage.
 function restore_options() {
-  // Use default value color = 'red' and likesColor = true.
+  // set default charities to empty array
   chrome.storage.sync.get({
     charities: []
   }, function(items) {
-    // addElement(JSON.stringify(items))
+    // show all currently selected charities
     items.charities.forEach(function(value) {
-      // addElement(value)
       document.getElementById(value).setAttribute('checked', 'checked')
-      // $(`input[value=${value}]`).attr('checked', 'checked')
     })
-    // document.getElementById('charity-checkboxes').value = items.favoriteColor;
   });
 }
 
